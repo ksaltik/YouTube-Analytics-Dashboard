@@ -206,8 +206,10 @@ function yt_dash_content() {
 	}
 	$yt_dash_statsdata = "";
 	
-	foreach ( $data->getRows() as $row ) {
-		$yt_dash_statsdata .= "['" . $row[0] . "'," . $row[1] . "],";
+	if($data && is_array($data->getRows())){
+        foreach ($data->getRows() as $key => $row)
+        {
+               	$yt_dash_statsdata .= "['" . $row[0] . "'," . $row[1] . "],";
 	}
 	
 	$metrics = 'views,estimatedMinutesWatched,averageViewDuration,likes,dislikes,comments';
